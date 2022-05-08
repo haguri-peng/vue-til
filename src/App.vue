@@ -1,38 +1,15 @@
 <template>
   <div>
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
-    <hello-world msg="Welcome to Your Vue.js App"></hello-world>
-    <app-header></app-header>
+    <header>
+      <router-link to="/login">로그인</router-link> |
+      <router-link to="/signup">회원가입</router-link>
+    </header>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-import AppHeader from './components/common/AppHeader.vue';
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld,
-    AppHeader,
-  },
-  created() {
-    // eslint-disable-next-line
-		var a = 10;
-
-    console.log('created!!');
-  },
-};
+export default {};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
