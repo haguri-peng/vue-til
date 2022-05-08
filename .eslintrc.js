@@ -26,6 +26,7 @@ module.exports = {
         printWidth: 80,
         braketSpacing: true,
         arrowParens: 'avoid',
+        endOfLine: 'auto',
       },
     ],
     'array-element-newline': [
