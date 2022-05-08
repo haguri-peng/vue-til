@@ -1,17 +1,21 @@
 <template>
   <div>
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+    <hello-world msg="Welcome to Your Vue.js App"></hello-world>
+    <app-header></app-header>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue';
+import AppHeader from './components/common/AppHeader.vue';
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
+    AppHeader,
   },
   created() {
     // eslint-disable-next-line
