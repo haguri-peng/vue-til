@@ -59,6 +59,10 @@ export default {
         console.log(data);
 
         this.logMessage = `${data.user.username}님이 로그인되었습니다.\n3초 후에 Main 화면으로 이동합니다.`;
+
+        setTimeout(() => {
+          this.$router.push('/main');
+        }, 3000);
       } catch (err) {
         this.logMessage = err.response.data;
       } finally {
