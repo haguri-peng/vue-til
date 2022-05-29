@@ -62,6 +62,8 @@ export default {
 
         setTimeout(() => {
           this.$store.commit('setUsername', data.user.username);
+          this.$store.commit('setToken', data.token);
+
           this.$router.push('/main');
         }, 3000);
       } catch (err) {

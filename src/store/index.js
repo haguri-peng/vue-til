@@ -4,6 +4,7 @@ const store = createStore({
   state() {
     return {
       username: '',
+      token: '',
     };
   },
   getters: {
@@ -17,6 +18,12 @@ const store = createStore({
     },
     clearUsername(state) {
       state.username = '';
+    },
+    setToken(state, token) {
+      state.token = token;
+    },
+    clearToken(state) {
+      state.token = '';
     },
   },
 });
