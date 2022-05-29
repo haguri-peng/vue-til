@@ -1,12 +1,16 @@
 <template>
   <header>
     <div>
-      <router-link to="/" class="logo"> TIL </router-link>
+      <router-link to="/" class="logo">
+        TIL
+        <span class="username" v-if="isLogin">by {{ username }}</span>
+      </router-link>
     </div>
     <div class="navigations">
       <template v-if="isLogin">
-        <span class="username">{{ username }}</span> |
-        <a href="javascript: void(0)" @click="logoutUser">로그아웃</a>
+        <a href="javascript: void(0)" @click="logoutUser" class="logout-button">
+          로그아웃
+        </a>
       </template>
       <template v-else>
         <router-link to="/login">로그인</router-link> |
@@ -70,5 +74,8 @@ a.router-link-exact-active {
 }
 span.username {
   color: white;
+}
+.logout-button {
+  font-size: 14px;
 }
 </style>
