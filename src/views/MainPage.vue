@@ -2,52 +2,49 @@
   <div>
     <div class="main list-container contents">
       <h1 class="page-header">Today I Learned</h1>
-      <ul>
-        <li v-for="postItem in postItems" :key="postItem._id">
-          <div class="post-title">
-            {{ postItem.title }}
-          </div>
-          <div class="post-contents">
-            {{ postItem.contents }}
-          </div>
-          <div class="post-time">
-            {{ getCreatedTime(postItem.createdAt) }}
-          </div>
-        </li>
+      <loading-spinner v-if="isLoading"></loading-spinner>
+      <ul v-else>
+        <post-list-item
+          v-for="postItem in postItems"
+          :key="postItem._id"
+          :postItem="postItem"
+        ></post-list-item>
       </ul>
     </div>
+    <router-link to="/add" class="create-button">
+      <i class="ion-md-add"></i>
+    </router-link>
   </div>
 </template>
 
 <script>
-import moment from 'moment-timezone';
+import PostListItem from '@/components/posts/PostListItem.vue';
+import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
 import { fetchPosts } from '@/api/index';
 
 export default {
+  components: {
+    PostListItem,
+    LoadingSpinner,
+  },
   data() {
     return {
       postItems: [],
+      isLoading: false,
     };
   },
   methods: {
     async fetchData() {
+      this.isLoading = true;
       const { data } = await fetchPosts();
       console.log(data);
 
       this.postItems = data.posts;
-    },
-    getCreatedTime(isoDate) {
-      let newDate = moment
-        .utc(isoDate)
-        .tz('Asia/Seoul')
-        .format('YYYY/MM/DD a h:mm:ss');
-      return newDate;
+      this.isLoading = false;
     },
   },
   created() {
     this.fetchData();
-
-    moment.locale('ko');
   },
 };
 </script>
