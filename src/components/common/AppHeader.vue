@@ -22,6 +22,7 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex';
+import { deleteCookie } from '@/utils/cookies';
 
 export default {
   computed: {
@@ -30,8 +31,13 @@ export default {
   },
   methods: {
     logoutUser() {
+      // Vuex's state
       this.$store.commit('clearUsername');
       this.$store.commit('clearToken');
+
+      // cookie
+      deleteCookie('til_user');
+      deleteCookie('til_auth');
 
       this.$router.push('/login');
     },
