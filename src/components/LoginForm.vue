@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import { loginUser } from '@/api/index';
 import { validateEmail } from '@/utils/validation';
 
 export default {
@@ -55,17 +54,8 @@ export default {
       };
 
       try {
-        const { data } = await loginUser(userData);
-        console.log(data);
-
-        this.logMessage = `${data.user.username}님이 로그인되었습니다.\n3초 후에 Main 화면으로 이동합니다.`;
-
-        setTimeout(() => {
-          this.$store.commit('setUsername', data.user.username);
-          this.$store.commit('setToken', data.token);
-
-          this.$router.push('/main');
-        }, 3000);
+        await this.$store.dispatch('LOGIN', userData);
+        this.$router.push('/main');
       } catch (err) {
         this.logMessage = err.response.data;
       } finally {
