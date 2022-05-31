@@ -9,6 +9,7 @@ body {
 }
 .app-contents {
   height: calc(100% - 64px - 102px);
+  padding-top: 50px;
 }
 h1 {
   text-align: center;

@@ -13,7 +13,8 @@
         </a>
       </template>
       <template v-else>
-        <router-link to="/login">로그인</router-link> |
+        <router-link to="/login">로그인</router-link>
+        <span style="margin-left: 10px">|</span>
         <router-link to="/signup">회원가입</router-link>
       </template>
     </div>
@@ -47,6 +48,9 @@ export default {
 
 <style scoped>
 header {
+  position: fixed;
+  height: 50px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
