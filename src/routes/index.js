@@ -42,6 +42,10 @@ const routes = [
     component: () => import('@/views/MainPage.vue'),
   },
   {
+    path: '/add',
+    component: () => import('@/views/PostAddPage.vue'),
+  },
+  {
     path: '/notfound',
     component: () => import('@/views/NotFoundPage.vue'),
   },
