@@ -5,7 +5,7 @@ import {
   saveUserToCookie,
   saveAuthToCookie,
 } from '@/utils/cookies';
-import { loginUser } from '@/api/index';
+import { loginUser } from '@/api/auth';
 
 const store = createStore({
   state() {

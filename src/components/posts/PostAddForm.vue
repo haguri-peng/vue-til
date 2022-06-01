@@ -38,7 +38,7 @@
 
 <script>
 import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
-import { createPost } from '@/api/index';
+import { createPost } from '@/api/posts';
 
 export default {
   components: {
