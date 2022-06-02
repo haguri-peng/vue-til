@@ -7,15 +7,15 @@
       {{ postItem.contents }}
     </div>
     <div class="post-time">
-      {{ getCreatedTime(postItem.createdAt) }}
-      <i class="icon ion-md-create"></i>
+      {{ createdFormatDate }}
+      <i class="icon ion-md-create" @click="routeEditPage"></i>
       <i class="icon ion-md-trash" @click="deleteItem"></i>
     </div>
   </li>
 </template>
 
 <script>
-import moment from 'moment-timezone';
+import { formatDate } from '@/utils/filters';
 import { deletePost } from '@/api/posts';
 
 export default {
@@ -25,13 +25,14 @@ export default {
       required: true,
     },
   },
+  computed: {
+    createdFormatDate() {
+      return formatDate(this.postItem.createdAt);
+    },
+  },
   methods: {
-    getCreatedTime(isoDate) {
-      let newDate = moment
-        .utc(isoDate)
-        .tz('Asia/Seoul')
-        .format('YYYY/MM/DD a h:mm:ss');
-      return newDate;
+    routeEditPage() {
+      this.$router.push(`/post/${this.postItem._id}`);
     },
     async deleteItem() {
       if (!confirm('Do you want to delete it?')) return;
@@ -44,9 +45,6 @@ export default {
         alert(err.response.data.message);
       }
     },
-  },
-  created() {
-    moment.locale('ko');
   },
 };
 </script>
