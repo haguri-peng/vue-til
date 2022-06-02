@@ -67,6 +67,7 @@ export default {
       try {
         this.isLoading = true;
         await createPost(postData);
+        this.isLoading = false;
         // const response = await createPost(postData);
         // console.log(response);
         this.$router.push('/main');
@@ -74,8 +75,6 @@ export default {
         console.error(err);
         this.logMessage =
           err.response.data.error.message || err.response.data.message;
-      } finally {
-        this.isLoading = false;
       }
     },
   },
