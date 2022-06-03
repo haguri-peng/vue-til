@@ -20,7 +20,7 @@ describe('SignupForm.vue', () => {
     expect(wrapper.vm.isUsernameValid).not.toBeTruthy();
   });
 
-  test('ID, PWD, Nicname이 입력되지 않으면, 가입 버튼이 비활성화 된다.', () => {
+  test('ID, PWD, Nickname이 입력되지 않으면, 가입 버튼이 비활성화 된다.', () => {
     const btnEl = wrapper.find('button.btn');
     expect(
       btnEl.classes().findIndex(val => val === 'disabled')
