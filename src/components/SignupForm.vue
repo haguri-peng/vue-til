@@ -17,6 +17,9 @@
         <button
           type="submit"
           class="btn"
+          :class="
+            !isUsernameValid || !password || !nickname ? 'disabled' : null
+          "
           :disabled="!isUsernameValid || !password || !nickname"
         >
           Signup

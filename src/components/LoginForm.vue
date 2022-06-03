@@ -6,7 +6,7 @@
           <label for="username">ID: </label>
           <input type="text" id="username" v-model="username" />
           <p class="validation-text">
-            <span class="warning" v-if="!isUsernameValid && username">
+            <span class="warning" v-if="!isUsernameValid">
               Please enter an email address
             </span>
           </p>
@@ -18,6 +18,7 @@
         <button
           type="submit"
           class="btn"
+          :class="!isUsernameValid || !password ? 'disabled' : null"
           :disabled="!isUsernameValid || !password"
         >
           Login
